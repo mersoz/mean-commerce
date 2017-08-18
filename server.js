@@ -36,6 +36,7 @@ app.use(routes);
 // REST API
 app.get('/api/products', productsController.index);
 app.post('/api/products', productsController.create);
+app.get('/api/products/:id', productsController.show);
 app.delete('/api/products/:id', productsController.delete);
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/client/js/views/index.html`));

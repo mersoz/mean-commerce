@@ -130,7 +130,24 @@ section.aboutus div.about-image {
   background-size: cover;
 }
 
-section.productsView ul li:nth-child(3n+1) {
-  /*background-color: red;*/
-  margin-left: 0;
+
+/*section.productsView ul li:nth-child(3n+1) {*/
+section.productsView ul li.four.columns {
+  margin: 0;
+  padding: 2%;
+  width: 33.3333333333%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+section.productsView ul li.four.columns:hover {
+  border: 1px solid #999;
+}
+
+section.productsView ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+section.productsView ul li a h5 {
+  color: #999;
 }

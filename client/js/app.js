@@ -1,1 +1,2 @@
-var app = angular.module('meanApp', ['ngResource', 'ui.router']);
+angular
+  .module('meanApp', ['ui.router', 'ngResource']);
