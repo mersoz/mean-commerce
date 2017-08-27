@@ -1,8 +1,41 @@
 var mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-module.exports = mongoose.model('User', {
-  username: String,
-  email: String,
-  first_name: String,
-  last_name: Number
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String },
+  first_name: { type: String },
+  last_name: { type: String },
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product'
+  }]
 });
+
+userSchema
+  .virtual('passwordConfirmation')
+  .set(function setPasswordConfirmation(passwordConfirmation) {
+    this._passwordConfirmation = passwordConfirmation;
+  });
+
+userSchema.pre('validate', function checkPassword(next) {
+
+  if(this.isModified('password') && this._passwordConfirmation !== this.password) {
+    this.invalidate('passwordConfirmation', 'does not match');
+  }
+  next();
+});
+
+userSchema.pre('save', function hashPassword(next) {
+  if(this.isModified('password')) {
+    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
+  }
+  next();
+});
+
+userSchema.methods.validatePassword = function validatePassword(password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
+module.exports = mongoose.model('User', userSchema);

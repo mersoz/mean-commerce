@@ -1,3 +1,8 @@
+<div class="jumbotron" alt="Image">
+  <div class="overlay">
+    <h3 class="">Ürün detayları</h3>
+  </div>
+</div>
 <section class="container">
   <!-- {{ productsShow }} -->
   <!-- {{ productsShow.productsShow() }} -->
@@ -6,18 +11,31 @@
   <!-- Products View -->
   <div>
     <h5>{{ productsShow.product.name }}</h5>
-    <p>{{ productsShow.product.price }} TL + KDV </p>
-    <p>{{ productsShow.product.description }}</p>
-    <img src="{{productsShow.product.image}}" alt="{{ productsShow.product.name }}">
+    <p></p>
+    <img  class="five columns" src="{{productsShow.product.image}}" alt="{{ productsShow.product.name }}">
+    <p class="five columns">
+      {{ productsShow.product.description }}
+    <br>
+      {{ productsShow.product.price }} TL + KDV
+      <span ng-controller="CartCtrl as cart" >
+      <button class="add"  ng-click="cart.addToCart(productsShow.product)">
+        <img class="icon" src="/images/Shopping-Cart-icon.png" alt="">
+         Add to Cart
+       </button>
+     </span>
+    </p>
     <!-- <button ng-click="products.addToCart(product)">Add To Cart</button> -->
     <!-- <button ng-click="products.delete(product)">Delete</button> -->
 
-    <form class="twelve columns" ng-submit="products.update()">
+    <form class="twelve columns" ng-submit="productsShow.update()">
       <input type="text" placeholder="Product name" ng-model="productsShow.product.name" name="" value="">
       <input type="number" placeholder="Product price" ng-model="productsShow.product.price" name="" value="">
       <input type="text" placeholder="Product description" ng-model="productsShow.product.description" name="" value="">
       <input type="text" placeholder="Product image" ng-model="productsShow.product.image" name="" value="">
       <button type="submit" name="button">Update</button>
+      <button class="delete" ng-click="productsShow.delete()">Delete Product</button>
+
     </form>
+
 </div>
 </section>

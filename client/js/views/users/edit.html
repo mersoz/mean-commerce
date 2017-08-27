@@ -1,0 +1,31 @@
+<div class="jumbotron" alt="Image">
+  <div class="overlay">
+    <h3 class="">Edit Account</h3>
+  </div>
+</div>
+
+<section class="clearfix">
+  <form class="twelve columns" ng-submit="usersEdit.submit()" novalidate>
+    <!-- {{ usersEdit.user }} -->
+    <label for="username">Username</label>
+    <!-- <input type="text" name="username" id="username" ng-model="usersEdit.user.username"> -->
+    <input type="text" ng-model="usersEdit.user.username" name="username" value="">
+
+    <label for="email">E-mail</label>
+    <input type="text" ng-model="usersEdit.user.email" name="email" value="">
+
+    <label for="firstName">First name:</label>
+    <input type="text" ng-model="usersEdit.user.first_name" name="firstName" value="">
+
+    <label for="lastName">Last name:</label>
+    <input type="text" ng-model="usersEdit.user.last_name" name="lastName" value="">
+
+    <label for="password">Password</label>
+    <input type="text" ng-model="usersEdit.user.password" name="password" required>
+
+    <label for="passwordConfirmation">Password Confirmation</label>
+    <input type="text" ng-model="usersEdit.user.passwordConfirmation" name="passwordConfirmation" required>
+
+    <button type="submit" name="button">Update</button>
+  </form>
+</section>

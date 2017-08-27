@@ -1,0 +1,22 @@
+<div class="jumbotron" alt="Image">
+  <div class="overlay">
+    <h3 class="">Kayıt ol</h3>
+  </div>
+</div>
+<section class="container clearfix login_register">
+
+    <form class="twelve columns" ng-submit="register.submit()">
+      <!-- <h3 class="login_register">KAYIT OL</h3> -->
+      <input type="text" placeholder="Username" ng-model="register.user.username" name="" value="">
+      <input type="text" placeholder="Email" ng-model="register.user.email" name="" value="">
+
+      <input type="password" name="password" id="password" ng-model="register.user.password" required placeholder="Password">
+
+      <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required placeholder="Confirm Password">
+
+      <input type="text" placeholder="First name" ng-model="register.user.first_name" name="" value="">
+      <input type="text" placeholder="Last name" ng-model="register.user.last_name" name="" value="">
+      <button type="submit" name="button">KAYIT</button>
+    </form>
+<!-- </span> -->
+</section>

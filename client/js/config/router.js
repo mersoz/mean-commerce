@@ -4,25 +4,64 @@ angular
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider", '$locationProvider'];
 function Router($stateProvider, $urlRouterProvider, $locationProvider) {
+
+$locationProvider.html5Mode(true);
+
 $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: '/js/views/static/home.html'
-  })
+  // .state('home', {
+  //   url: '/',
+  //  templateUrl: '/js/views/static/home.html'
+  //   templateUrl: '/js/views/products/index.html',
+  //   controller: 'ProductsIndexCtrl as productsIndex'
+  // })
+
   .state('about', {
-    url: '/about',
+    url: '/hakkimizda',
     templateUrl: '/js/views/static/about.html'
   })
+  .state('usersIndex', {
+    url: '/users',
+    templateUrl: '/js/views/users/index.html',
+    controller: 'UsersIndexCtrl as usersIndex'
+  })
+  .state('usersShow', {
+    url: '/users/:id',
+    templateUrl: '/js/views/users/show.html',
+    controller: 'UsersShowCtrl as usersShow'
+  })
+  .state('usersEdit', {
+    url: '/users/:id/edit',
+    templateUrl: '/js/views/users/edit.html',
+    controller: 'UsersEditCtrl as usersEdit'
+  })
   .state('productsIndex', {
-    url: '/products',
+    url: '/',
     templateUrl: '/js/views/products/index.html',
     controller: 'ProductsIndexCtrl as productsIndex'
   })
   .state('productsShow', {
-    url: '/products/:id',
+    url: '/urunler/:id',
     templateUrl: '/js/views/products/show.html',
     controller: 'ProductsShowCtrl as productsShow'
+    // controller: 'CartCtrl as cart'
+  })
+  .state('cart', {
+    url: '/sepetim',
+    templateUrl: '/js/views/users/cart.html',
+    controller: 'CartCtrl as cart'
+  })
+  .state('login', {
+    url: '/giris',
+    templateUrl: 'js/views/auth/login.html',
+    controller: 'LoginCtrl as login'
+  })
+  .state('register', {
+    url: '/kayit',
+    templateUrl: 'js/views/auth/register.html',
+    controller: 'RegisterCtrl as register'
+    // controller: 'LoginCtrl as login'
   });
 
 $urlRouterProvider.otherwise('/');
+
 }

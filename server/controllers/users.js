@@ -1,57 +1,61 @@
-var Product = require('../models/product');
+var User = require('../models/user');
 
 function indexRoute(req, res, next) {
-  Product
+  User
     .find()
     .exec()
-    .then((products) => res.status(200).json(products))
+    .then((users) => res.status(200).json(users))
     .catch(next);
 }
 
 function createRoute(req, res, next) {
-  Product
+  // req.body.createdBy = req.user;
+
+  User
     .create(req.body)
-    .then((product) => res.status(201).json(product))
+    .then((user) => res.status(201).json(user))
     .catch(next);
 }
 
 function showRoute(req, res, next) {
-  Product
+  User
     .findById(req.params.id)
     .exec()
-    .then((product) => {
-      if(!product) return res.notFound();
-      res.status(200).json(product);
+    .then((user) => {
+      if(!user) return res.notFound();
+      res.status(200).json(user);
     })
     .catch(next);
 }
 
 function deleteRoute(req, res, next) {
-  console.log(req.params);
-  Product
+  User
     .findById(req.params.id)
     .exec()
-    .then((product) => {
-      if(!product) return res.notFound();
-      return product.remove();
+    .then((user) => {
+      if(!user) return res.notFound();
+      return user.remove();
     })
     .then(() => res.status(204).end())
     .catch(next);
 }
 
 function updateRoute(req, res, next) {
-  Product
+  console.log(req.body);
+  User
     .findById(req.params.id)
     .exec()
-    .then((product) => {
-      if(!product) return res.notFound();
+    .then((user) => {
+      if(!user) return res.notFound();
       for(const field in req.body) {
-        product[field] = req.body[field];
+        user[field] = req.body[field];
       }
-      return product.save();
+      console.log(user);
+      return user.save();
     })
-    .then((product) => res.status(200).json(product))
+    .then((user) => res.status(201).json(user))
     .catch(next);
+
 }
 
 module.exports = {

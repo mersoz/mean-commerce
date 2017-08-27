@@ -3,59 +3,54 @@ angular
   .controller('ProductsIndexCtrl', ProductsIndexCtrl)
   .controller('ProductsShowCtrl', ProductsShowCtrl);
 
-ProductsIndexCtrl.$inject = ['Product', '$http', '$scope', '$resource'];
-function ProductsIndexCtrl(Product, $http, $scope, $resource) {
+ProductsIndexCtrl.$inject = ['Product', '$http', '$scope', '$state', '$resource'];
+function ProductsIndexCtrl(Product, $http, $scope, $state, $resource) {
   // const Product = $resource('/api/products');
   const vm = this;
-  vm.all = [];
-  // vm.newProduct = {};
+  vm.all = Product.query();
 
-  productsIndex();
-  function productsIndex() {
-    $http.get('http://localhost:3000/api/products')
-      .then((response) => {
-        console.log(response);
-        vm.all = response.data;
-      });
-  }
-
-  vm.create = createProduct;
-  function createProduct() {
+  vm.create = productsCreate;
+  function productsCreate() {
     $http.post('http://localhost:3000/api/products', vm.newProduct)
     .then((response) => {
       vm.all.push(response.data);
       vm.newProduct = {};
     });
   }
-
-  vm.delete = productsDelete;
-  function productsDelete(product) {
-    $http.delete(`http://localhost:3000/api/products/${product.id}` )
-      .then((response) => {
-        const index = vm.all.indexOf(product);
-        vm.all.splice(index, 1);
-      });
-  }
 }
 
-
-ProductsShowCtrl.$inject = ['$http', '$stateParams', '$state'];
-function ProductsShowCtrl($http, $stateParams, $state) {
+ProductsShowCtrl.$inject = ['User', 'Product', '$http', '$stateParams', '$state', '$rootScope', '$auth', 'ngCart'];
+function ProductsShowCtrl(User, Product, $http, $stateParams, $state, $rootScope, $auth, ngCart) {
   const vm = this;
 
-  productsShow();
-  function productsShow(product) {
-    $http.get(`http://localhost:3000/api/products/${$stateParams.id}`)
-      .then((response) => {
-        vm.product = response.data;
-      });
+  if ($rootScope.currentUser) {
+    console.log($rootScope.currentUser);
+  } else {
+    console.log('Please log in.');
+  };
 
+  Product.get($stateParams)
+    .$promise
+    .then((data) => {
+      console.log(data);
+      vm.product = data;
+    });
+
+  vm.update = productsUpdate;
+  function productsUpdate() {
+    console.log(vm.product);
+
+    vm.product
+      .$update()
+      .then(() => $state.go('productsShow', $stateParams));
   }
 
-  vm.update = updateProduct;
-  function updateProduct() {
-    // vm.product;
-
-
+  vm.delete = productsDelete;
+  function productsDelete() {
+    vm.product
+      .$remove()
+      .then(() => $state.go('productsIndex'));
   }
+
+
 }
