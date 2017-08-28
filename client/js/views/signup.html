@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="meanApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VİNO ŞARAP - Yakında geliyor</title>
+    <base href="/" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body ng-controller="MainCtrl as main">
+    <!-- <header>
+      <nav>
+        <h1>Vino App</h1>
+        <ul class="container">
+          <li class="two columns logo"><a ui-sref="home" ui-sref-active="active">VİNO</a></li>
+          <li class="two columns"  ng-if="main.isAuthenticated()"><a ng-click="main.logout()">ÇIKIŞ</a></li>
+
+          <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">GİRİŞ</a></li>
+          <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">KAYIT</a></li>
+          <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
+          <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">HESABIM</a></li>
+          <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="cart" ui-sref-active="active">SEPETİM</a></li>
+          <li class="two columns"><a ui-sref="contact" ui-sref-active="active">İLETİŞİM</a></li>
+          <li class="two columns"><a ui-sref="productsIndex" ui-sref-active="active">ÜRÜNLER</a></li>
+          <li class="two columns"><a ui-sref="about" ui-sref-active="active">HAKKIMIZDA</a></li>
+
+          <li class="two columns" ng-if="main.isAuthenticated()"><a ui-sref="usersIndex" ui-sref-active="active">Users</a></li>
+        </ul>
+      </nav>
+    </header> -->
+    <!-- <p>{{  }}</p> -->
+    <main ui-view></main>
+
+    <footer class="container">
+      <ul>
+        <li class="two columns">Vino App</li>
+        <li class="two columns">Contact</li>
+        <li class="two columns">Instagram</li>
+        <li class="two columns">E-mail</li>
+        <li class="two columns">Sign up</li>
+      </ul>
+    </footer>
+
+    <script src="/node_modules/angular/angular.min.js" charset="utf-8"></script>
+    <script src="/node_modules/angular-resource/angular-resource.min.js" charset="utf-8"></script>
+    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js" charset="utf-8"></script>
+    <script src="/node_modules/satellizer/dist/satellizer.min.js" charset="utf-8"></script>
+    <script src="/bower_components/ngCart/dist/ngCart.min.js" charset="utf-8"></script>
+
+
+    <script type="text/javascript" src="/js/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/config/router.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/config/satellizer.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="/js/factories/user.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/factories/product.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="/js/controllers/auth.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/controllers/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/controllers/cart.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/controllers/users.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/controllers/products.js" charset="utf-8"></script>
+
+  </body>
+</html>

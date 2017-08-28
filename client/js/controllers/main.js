@@ -2,15 +2,22 @@ angular
   .module('meanApp')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'User'];
-function MainCtrl($rootScope, $state, $auth, User) {
+MainCtrl.$inject = ['$window', '$scope', '$rootScope', '$state', '$auth', 'User'];
+function MainCtrl($window, $scope, $rootScope, $state, $auth, User) {
+// MainCtrl.$inject = ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$state', '$auth', 'User'];
+// function MainCtrl($scope, $rootScope, $route, $routeParams, $location, $state, $auth, User) {
+  // $scope.$route = $route;
+  // $scope.$location = $location;
+  // $scope.$routeParams = $routeParams;
+
   const vm = this;
 
+  // Something wrong with $auth.isAuthenticated
+  // console.log($auth.isAuthenticated);
   vm.isAuthenticated = $auth.isAuthenticated;
-  //
-  // console.log(vm.isAuthenticated);
 
   if($auth.getPayload()) {
+    console.log('user logged in = payload found');
     vm.currentUserId = $auth.getPayload().userId;
     User
       .get({ id: vm.currentUserId })
@@ -18,16 +25,25 @@ function MainCtrl($rootScope, $state, $auth, User) {
       .then((user) => {
         console.log(user);
         vm.currentUser = user;
+
+        $scope.currentUser = user;
         $rootScope.currentUser = user;
 
         // vm.isAuthenticated = true;
       });
+      console.log($scope.currentUser);
+
+  } else {
+    console.log('no payload found');
   }
+  console.log($rootScope.currentUser);
+  console.log($scope.currentUser);
 
   vm.logout = logout;
 
   function logout() {
     $auth.logout();
+    $window.location.reload();
     $state.go('productsIndex');
   }
 

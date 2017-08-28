@@ -8,8 +8,13 @@ const userSchema = new mongoose.Schema({
   first_name: { type: String },
   last_name: { type: String },
   cart: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product'
+    name: { type: String },
+    price: { type: Number },
+    quantity: { type: Number },
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+    }
   }]
 });
 
@@ -20,7 +25,6 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-
   if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'does not match');
   }

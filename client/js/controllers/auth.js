@@ -16,14 +16,17 @@ function RegisterCtrl($auth, $state) {
   vm.submit = submit;
 }
 
-LoginCtrl.$inject = ['$auth', '$state'];
-function LoginCtrl($auth, $state) {
+LoginCtrl.$inject = ['$window', '$auth', '$state'];
+function LoginCtrl($window, $auth, $state) {
   const vm = this;
   vm.credentials = {};
 
   function submit() {
     $auth.login(vm.credentials)
-      .then((response) => $state.go('productsIndex'));
+      .then((response) => {
+        $window.location.reload();
+        $state.go('productsIndex', {}, { reload: true })
+      });
   }
 
   vm.submit = submit;

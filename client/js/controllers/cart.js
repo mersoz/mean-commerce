@@ -9,20 +9,23 @@ function CartCtrl(User, Product, $http, $auth, $state, $rootScope, $stateParams)
   const vm = this;
   var temp_id = $rootScope.currentUser.id;
 
+  console.log('Error because no product on cart page');
   Product.get($stateParams)
   .$promise
   .then((data) => {
     vm.product = data;
-    console.log('product saved in vm');
+    // console.log('product saved in vm');
   });
 
   User.get({ id: $auth.getPayload().userId })
     .$promise
     .then((data) => {
       vm.user = data;
-      console.log('user saved in vm');
+      // console.log(vm.user.cart);
+      // vm.all = vm.user.cart;
+      // console.log('user saved in vm');
     });
-  // vm.all = $rootScope.currentUser.cart;
+  // vm.all = vm.user.cart;
   // console.log(vm.all);
 
   vm.addToCart = addToCart;
@@ -30,14 +33,11 @@ function CartCtrl(User, Product, $http, $auth, $state, $rootScope, $stateParams)
     if (!$rootScope.currentUser) {
       console.log('You must log in to add product to cart.');
     }
-    console.log(product);
-    // console.log($stateParams);
 
     var elementIndex = vm.user.cart.map(function(item) {return item.id}).indexOf(product.id);
 
-    console.log(elementIndex);
-
     var objectFound = vm.user.cart[elementIndex];
+    console.log(objectFound);
 
     if (!objectFound) {
 
@@ -50,12 +50,15 @@ function CartCtrl(User, Product, $http, $auth, $state, $rootScope, $stateParams)
         id: product.id,
         quantity: 1
       });
-      vm.user.$update().then(() => $state.go('about'));
+      vm.user.$update();
+      // vm.user.$update().then(() => $state.go('cart'));
       console.log(vm.user.cart);
       console.log('added product to cart');
     } else {
       console.log('found product in cart already, adding one more');
       objectFound.quantity++;
+      vm.user.$update().then(() => $state.go('cart'));
+
     }
     console.log(vm.user.cart);
   }
