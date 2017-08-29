@@ -15,7 +15,15 @@ function MainCtrl($window, $scope, $rootScope, $state, $auth, User) {
   // Something wrong with $auth.isAuthenticated
   // console.log($auth.isAuthenticated);
   vm.isAuthenticated = $auth.isAuthenticated;
+  // if ($auth.isAuthenticated) {
+  //     console.log('is authenticated');
+  // } else {
+  //   console.log('not authenticated');
+  //
+  // }
+  // vm.isAuthenticated = false;
 
+  console.log($auth.getPayload());
   if($auth.getPayload()) {
     console.log('user logged in = payload found');
     vm.currentUserId = $auth.getPayload().userId;

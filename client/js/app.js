@@ -1,2 +1,2 @@
 angular
-  .module('meanApp', ['ui.router', 'ngResource', 'satellizer', 'ngCart']);
+  .module('meanApp', ['ui.router', 'ngResource', 'ngCart', 'satellizer', 'ngCart']);

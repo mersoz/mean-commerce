@@ -16,18 +16,23 @@ function RegisterCtrl($auth, $state) {
   vm.submit = submit;
 }
 
-LoginCtrl.$inject = ['$window', '$auth', '$state'];
-function LoginCtrl($window, $auth, $state) {
+LoginCtrl.$inject = ['$window', '$auth', '$state', '$rootScope'];
+function LoginCtrl($window, $auth, $state, $rootScope) {
   const vm = this;
   vm.credentials = {};
 
-  function submit() {
-    $auth.login(vm.credentials)
-      .then((response) => {
-        $window.location.reload();
-        $state.go('productsIndex', {}, { reload: true })
-      });
+  console.log($rootScope.currentUser);
+  if ($rootScope.currentUser) {
+    $state.go('productsIndex')
   }
 
   vm.submit = submit;
+  function submit() {
+    $auth.login(vm.credentials)
+      .then((response) => {
+        // console.log(response);
+        $window.location.reload();
+      });
+  }
+
 }
