@@ -1,0 +1,102 @@
+<div class="jumbotron products">
+  <div class="overlay">
+    <h3 class="">SEPETİM</h3>
+  </div>
+</div>
+
+<section class="container cart">
+  <ngcart-cart></ngcart-cart>
+
+  <form>
+    <label for="coupon">İndirim kodu ekleyin:</label>
+    <input type="text" id="coupon">
+    <button class="mini" onclick="submitCoupon()"><i class="arrow right"></i></button>
+    <br>
+    <label for="payment">Ödeme seçenekleri:</label>
+    <input class="" type="radio" id="paymentChoice1" name="payment" value="Havale">
+    <label class="radio" for="paymentChoice1">Havale</label>
+    <input class="" type="radio" id="paymentChoice2" name="payment" value="Kapida odeme">
+    <label class="radio" for="paymentChoice2">Kapıda ödeme</label>
+
+    <button type="submit" name="submit_order">SİPARİŞİ TAMAMLA</button>
+  </form>
+
+
+
+  <p>
+    Ödeme için kapıda buluşalım !
+    <br>
+    Tchibo.com.tr'den veya 444 28 26 numaralı telefonla sipariş hattımızdan dilediğiniz ürünü sipariş verin, kapıda nakit veya kapıda kreti kartı tek çekim yöntemi ile ödeyin. Üstelik siparişlerinizde ücretsiz kargo avantajından yararlanabilirsiniz.
+    <br>
+
+    Kapıda ödeme avantajı için alt limit 75 TL ve üst limit 2000 TL'dir.
+    <br>
+
+    Kapıda ödeme iadeleri için detaylı bilgilere ''İade Süreçleri'' başlığı altından ulaşabilirsiniz.
+    <br>
+
+    Kapıda ödeme ile verilen siparişlerde 6,95 TL tutarında "Kapıda ödeme hizmet bedeli"alınmaktadır. Bu hizmet bedelinin iadesi yapılmamaktadır.
+  </p>
+
+
+
+
+</section>
+
+<script type="text/ng-template" id="template/ngCart/cart.html">
+  <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+      Sepetinizde ürün bulunmamaktadır.
+  </div>
+
+  <div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+    <table class="table table-striped ngCart cart">
+      <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th>Adet</th>
+          <th>Fiyat</th>
+          <th>Toplam</th>
+      </tr>
+      </thead>
+      <tfoot>
+      <tr ng-show="ngCart.getTax()">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>KDV ({{ ngCart.getTaxRate() }}%):</td>
+          <td>{{ ngCart.getTax() | currency: '₺ ' }}</td>
+      </tr>
+      <tr ng-show="ngCart.getShipping()">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Kargo:</td>
+          <td>{{ ngCart.getShipping() | currency: '₺ ' }}</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Toplam:</td>
+          <td>{{ ngCart.totalCost() | currency: '₺ ' }}</td>
+      </tr>
+      </tfoot>
+      <tbody>
+      <tr ng-repeat="item in ngCart.getCart().items track by $index">
+        <td><img class="cart-icons large" src="/images/foundation-icons/svgs/fi-x.svg" ng-click="ngCart.removeItemById(item.getId())"></span></td>
+
+        <td>{{ item.getName() }}</td>
+
+        <td>
+          <img class="cart-icons" src="/images/foundation-icons/svgs/fi-minus.svg" ng-class="{'disabled':item.getQuantity()==1}"
+                  ng-click="item.setQuantity(-1, true)">&nbsp;&nbsp;
+            {{ item.getQuantity() | number }}&nbsp;&nbsp;
+            <img class="cart-icons" src="/images/foundation-icons/svgs/fi-plus.svg" ng-click="item.setQuantity(1, true)"></td>
+        <td>{{ item.getPrice() | currency: '₺ '}}</td>
+        <td>{{ item.getTotal() | currency: '₺ ' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</script>

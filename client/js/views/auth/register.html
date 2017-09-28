@@ -3,20 +3,40 @@
     <h3 class="">Kayıt ol</h3>
   </div>
 </div>
-<section class="container clearfix login_register">
+<section class="clearfix login_register">
 
-    <form class="twelve columns" ng-submit="register.submit()">
+    <form class="container" ng-submit="register.submit()">
       <!-- <h3 class="login_register">KAYIT OL</h3> -->
-      <input type="text" placeholder="Username" ng-model="register.user.username" name="" value="">
-      <input type="text" placeholder="Email" ng-model="register.user.email" name="" value="">
+      <label class="six columns" for="first_name">Adınız: </label>
+      <input class="six columns" type="text" name="first_name" ng-model="register.user.first_name">
+      <br>
+      <label class="six columns" for="last_name">Soyadınız: </label>
+      <input class="six columns" type="text" name="last_name" ng-model="register.user.last_name">
+      <br>
+      <label class="six columns" for="birthday">Doğum tarihiniz: </label>
+      <input class="six columns" type="date" name="birthday" placeholder="Doğum tarihiniz" ng-model="register.user.birthday" min="1900-01-01" max="2007-01-01">
+      <br>
+      <label class="six columns" for="email">E-mail adresiniz: </label>
+      <input class="six columns" type="text" name="email" ng-model="register.user.email">
+      <br>
+      <label class="six columns" for="gender">Cinsiyetiniz: </label>
+      <!-- <input class="six columns" type="text" name="gender" ng-model="register.user.gender"> -->
 
-      <input type="password" name="password" id="password" ng-model="register.user.password" required placeholder="Password">
+      <input class="one columns" type="radio" id="genderChoice1" name="gender" value="Erkek">
+      <label class="radio two columns" for="genderChoice1">Erkek</label>
 
-      <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required placeholder="Confirm Password">
+      <input class="one columns" type="radio" id="genderChoice2" name="gender" value="Kadin">
+      <label class="radio two columns" for="genderChoice2">Kadın</label>
 
-      <input type="text" placeholder="First name" ng-model="register.user.first_name" name="" value="">
-      <input type="text" placeholder="Last name" ng-model="register.user.last_name" name="" value="">
-      <button type="submit" name="button">KAYIT</button>
+
+      <br>
+      <label class="six columns" for="password">Şifreniz: </label>
+      <input class="six columns" type="password" name="password" id="password" ng-model="register.user.password" required>
+      <br>
+      <label class="six columns" for="password">Şifreniz (tekrar): </label>
+      <input class="six columns" type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
+      <br>
+      <button type="submit" name="button">KAYIT OL <i class="arrow right"></i></button>
     </form>
 <!-- </span> -->
 </section>

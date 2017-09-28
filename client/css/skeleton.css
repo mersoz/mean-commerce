@@ -54,9 +54,9 @@
     width: 80%; }
   .column,
   .columns {
-    margin-left: 4%; }
+    /*margin-left: 4%; }
   .column:first-child,
-  .columns:first-child {
+  .columns:first-child {*/
     margin-left: 0; }
 
   .one.column,
@@ -227,6 +227,7 @@ input[type="button"].button-primary:focus {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],
 input[type="number"],
+input[type="date"],
 input[type="search"],
 input[type="text"],
 input[type="tel"],
@@ -244,6 +245,7 @@ select {
 /* Removes awkward default styles on some inputs for iOS */
 input[type="email"],
 input[type="number"],
+input[type="date"],
 input[type="search"],
 input[type="text"],
 input[type="tel"],

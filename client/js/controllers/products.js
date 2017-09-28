@@ -1,10 +1,18 @@
 angular
   .module('meanApp')
   .controller('ProductsIndexCtrl', ProductsIndexCtrl)
-  .controller('ProductsShowCtrl', ProductsShowCtrl);
+  .controller('ProductsNewCtrl', ProductsNewCtrl)
+  .controller('ProductsShowCtrl', ProductsShowCtrl)
+  .controller('ProductsEditCtrl', ProductsEditCtrl);
 
 ProductsIndexCtrl.$inject = ['Product', '$http', '$scope', '$state', '$resource'];
 function ProductsIndexCtrl(Product, $http, $scope, $state, $resource) {
+  const vm = this;
+  vm.all = Product.query();
+}
+
+ProductsNewCtrl.$inject = ['Product', '$http', '$scope', '$state', '$resource'];
+function ProductsNewCtrl(Product, $http, $scope, $state, $resource) {
   // const Product = $resource('/api/products');
   const vm = this;
   vm.all = Product.query();
@@ -15,6 +23,7 @@ function ProductsIndexCtrl(Product, $http, $scope, $state, $resource) {
     .then((response) => {
       vm.all.push(response.data);
       vm.newProduct = {};
+      $state.go('productsIndex');
     });
   }
 }
@@ -35,11 +44,22 @@ function ProductsShowCtrl(User, Product, $http, $stateParams, $state, $rootScope
       console.log(data);
       vm.product = data;
     });
+}
+
+ProductsEditCtrl.$inject = ['User', 'Product', '$http', '$stateParams', '$state', '$rootScope', '$auth'];
+function ProductsEditCtrl(User, Product, $http, $stateParams, $state, $rootScope, $auth) {
+  const vm = this;
+  console.log('edit product');
+
+  Product.get($stateParams)
+    .$promise
+    .then((data) => {
+      console.log(data);
+      vm.product = data;
+    });
 
   vm.update = productsUpdate;
   function productsUpdate() {
-    console.log(vm.product);
-
     vm.product
       .$update()
       .then(() => $state.go('productsShow', $stateParams));
@@ -51,6 +71,5 @@ function ProductsShowCtrl(User, Product, $http, $stateParams, $state, $rootScope
       .$remove()
       .then(() => $state.go('productsIndex'));
   }
-
 
 }

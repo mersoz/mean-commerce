@@ -33,22 +33,20 @@ function MainCtrl($window, $scope, $rootScope, $state, $auth, User) {
       .then((user) => {
         console.log(user);
         vm.currentUser = user;
-
         $scope.currentUser = user;
         $rootScope.currentUser = user;
 
+        console.log($scope.currentUser);
+        console.log($scope.currentUser);
+        console.log($rootScope.currentUser);
+
         // vm.isAuthenticated = true;
       });
-      console.log($scope.currentUser);
-
   } else {
     console.log('no payload found');
   }
-  console.log($rootScope.currentUser);
-  console.log($scope.currentUser);
 
   vm.logout = logout;
-
   function logout() {
     $auth.logout();
     $window.location.reload();
@@ -69,4 +67,6 @@ function MainCtrl($window, $scope, $rootScope, $state, $auth, User) {
     console.log(stateName);
 
   });
+
+  // console.log(vm.stateName);
 }

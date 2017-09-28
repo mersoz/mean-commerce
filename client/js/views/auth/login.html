@@ -3,10 +3,12 @@
     <h3 class="">GİRİŞ YAP</h3>
   </div>
 </div>
-<section class="container">
-  <form class="twelve columns" ng-submit="login.submit()">
-    <input type="text" placeholder="Email" ng-model="login.credentials.email" name="" value="">
-    <input type="password" name="password" id="password" ng-model="login.credentials.password" required placeholder="Password">
-    <button type="submit" name="button">GİRİŞ</button>
+<section class="clearfix login_register">
+  <form class="container" ng-submit="login.submit()">
+    <label class="six columns" for="first_name">E-mail adresiniz: </label>
+    <input class="six columns" type="text" placeholder="Email" ng-model="login.credentials.email" name="" value="">
+    <label class="six columns" for="first_name">Şifreniz: </label>
+    <input class="six columns" type="password" name="password" id="password" ng-model="login.credentials.password" required placeholder="Password">
+    <button type="submit" name="button">GİRİŞ YAP <i class="arrow right"></i></button>
   </form>
 </section>

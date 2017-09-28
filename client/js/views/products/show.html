@@ -3,39 +3,39 @@
     <h3 class="">Ürün detayları</h3>
   </div>
 </div>
-<section class="container">
-  <!-- {{ productsShow }} -->
-  <!-- {{ productsShow.productsShow() }} -->
-  <!-- <h1>{{productsShow.product}}</h1> -->
-  <h3 class="twelve columns">Products Details</h3>
-  <!-- Products View -->
-  <div>
-    <h5>{{ productsShow.product.name }}</h5>
-    <p></p>
-    <img  class="five columns" src="{{productsShow.product.image}}" alt="{{ productsShow.product.name }}">
-    <p class="five columns">
-      {{ productsShow.product.description }}
-    <br>
-      {{ productsShow.product.price }} TL + KDV
-      <span ng-controller="CartCtrl as cart" >
-      <button class="add"  ng-click="cart.addToCart(productsShow.product)">
-        <img class="icon" src="/images/Shopping-Cart-icon.png" alt="">
-         Add to Cart
-       </button>
-     </span>
-    </p>
-    <!-- <button ng-click="products.addToCart(product)">Add To Cart</button> -->
-    <!-- <button ng-click="products.delete(product)">Delete</button> -->
 
-    <form class="twelve columns" ng-submit="productsShow.update()">
-      <input type="text" placeholder="Product name" ng-model="productsShow.product.name" name="" value="">
-      <input type="number" placeholder="Product price" ng-model="productsShow.product.price" name="" value="">
-      <input type="text" placeholder="Product description" ng-model="productsShow.product.description" name="" value="">
-      <input type="text" placeholder="Product image" ng-model="productsShow.product.image" name="" value="">
-      <button type="submit" name="button">Update</button>
-      <button class="delete" ng-click="productsShow.delete()">Delete Product</button>
+<section class="container productsShow">
+  <a ui-sref="productsEdit({ id: productsShow.product.id })" class="button admin">Ürünü düzenle</a>
 
-    </form>
+  <img src="{{productsShow.product.image}}" alt="{{ productsShow.product.name }}">
 
-</div>
+  <div class="productInfo">
+    <h3>{{ productsShow.product.name }}</h3>
+    <h5>₺ {{ productsShow.product.price }}</h5>
+    <ngcart-addtocart id="{{ productsShow.product.id }}" name="{{ productsShow.product.name }}" price="{{ productsShow.product.price }}" quantity="1" quantity-max="5">Sepete ekle</ngcart-addtocart>
+    <p>{{ productsShow.product.description }}</p>
+
+  </div>
 </section>
+
+<script type="text/ng-template" id="template/ngCart/addtocart.html">
+  <div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+
+  </div>
+  <div ng-show="attrs.id">
+    <div>
+      <span ng-show="quantityMax">
+        <select name="quantity" id="quantity" ng-model="q"
+                  ng-options=" v for v in qtyOpt"></select>
+      </span>
+      <button class="add"  ng-click="ngCart.addItem(id, name, price, q, data)">
+        <img class="icon" src="/images/shopping-cart-white.svg" alt="Cart">
+         <p>Sepete ekle</p>
+       </button>
+    </div>
+    <mark  ng-show="inCart()">
+      Bu ürün sepetinize eklendi. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Sepetten çıkar</a>
+    </mark>
+  </div>
+</script>

@@ -13,63 +13,63 @@ User.collection.drop();
 
 User
   .create([{
-    username: 'admin',
+    first_name: 'Vino',
+    last_name: 'Admin',
     email: 'admin@vino.com',
     password: 'admin',
     passwordConfirmation: 'admin',
-    first_name: 'Lorem',
-    last_name: 'Ipsum',
-    cart: []
-
+    city: 'Adana',
+    birthday: new Date("1999-09-20"),
+    gender: 'Kadın'
   }, {
-    username: 'janedoe',
+    first_name: 'Jane',
+    last_name: 'Doe',
     email: 'janedoe@vino.com',
     password: 'a',
     passwordConfirmation: 'a',
-    first_name: 'Jane',
-    last_name: 'Doe',
-    cart: []
-
+    city: 'Ankara',
+    birthday: new Date("1984-12-03"),
+    gender: 'Kadın'
   }])
   .then((users) => {
       console.log(`${users.length} users created`);
       return Product
       // Product
         .create([{
-          name: 'Cabarnet Sauvignon',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          name: 'Wine Cork Mantar USB 4GB',
+          description: 'Mantar usb ile şarap ürünlerinin teknolojik dünyasına adım atın. Şık ve günlük kullanımınıza uygun wine cork usb\'ler 4 GB\'lık saklama alanı sunar.\n\nŞıklığınızdan ödün vermeden çalışmalarınızı saklayabileceğiniz mantar usbler kullanım kolaylığı sağlarlar.',
           price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          image: 'https://vinosarap.com/wp-content/uploads/2017/07/Sevimli-mantar-usb-4gb.3.jpg',
           inStock: 5
         }, {
-          name: 'Pinot noir',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          name: 'Cork Robot - Luke',
+          description: 'Çok sevimli değil mi? :)\n\nŞarabınızı yudumlamaya başladığınız anlarda şarap mantarı koleksiyonunuza bir yenisini daha eklerken mantarınızı robot karakteri formunda saklayabilir, evinizde, ofisinizde, mutfağınızda bu küçük arkadaşınız ile keyifli anlarınızı yeniden hatırlayabilirsiniz.\n\nŞarap şişelerinizi süsleyerek hediye olarak götüreceğiniz robotunuz ile şarabınıza kişisellik ve özellik katabilirsiniz. Corkers – Şarap Mantarı Robotlar! Kutusu içinden çıkan iğneli pinlerle patlatacağınız şarap mantarınızı son derece eğlenceli robota dönüştürebiliyorsunuz.',
+          price: 35,
+          image: 'https://vinosarap.com/wp-content/uploads/2017/08/corkers_robots_luke_01.jpg',
           inStock: 5
         }, {
-          name: 'Merlot',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          name: 'Cork Robot - Bella',
+          description: 'Çok sevimli değil mi? :)\n\nŞarabınızı yudumlamaya başladığınız anlarda şarap mantarı koleksiyonunuza bir yenisini daha eklerken mantarınızı robot karakteri formunda saklayabilir, evinizde, ofisinizde, mutfağınızda bu küçük arkadaşınız ile keyifli anlarınızı yeniden hatırlayabilirsiniz.\n\nŞarap şişelerinizi süsleyerek hediye olarak götüreceğiniz robotunuz ile şarabınıza kişisellik ve özellik katabilirsiniz. Corkers – Şarap Mantarı Robotlar! Kutusu içinden çıkan iğneli pinlerle patlatacağınız şarap mantarınızı son derece eğlenceli robota dönüştürebiliyorsunuz.',
           price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          image: 'https://vinosarap.com/wp-content/uploads/2017/08/vino-%C5%9Farap-mantar%C4%B1-bella-1.jpg',
           inStock: 5
         }, {
-          name: 'Sauvignon blanc',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          name: 'Cork Robot - Pino',
+          description: 'Çok sevimli değil mi? :)\n\nŞarabınızı yudumlamaya başladığınız anlarda şarap mantarı koleksiyonunuza bir yenisini daha eklerken mantarınızı robot karakteri formunda saklayabilir, evinizde, ofisinizde, mutfağınızda bu küçük arkadaşınız ile keyifli anlarınızı yeniden hatırlayabilirsiniz.\n\nŞarap şişelerinizi süsleyerek hediye olarak götüreceğiniz robotunuz ile şarabınıza kişisellik ve özellik katabilirsiniz. Corkers – Şarap Mantarı Robotlar! Kutusu içinden çıkan iğneli pinlerle patlatacağınız şarap mantarınızı son derece eğlenceli robota dönüştürebiliyorsunuz.',
+          price: 45,
+          image: 'https://vinosarap.com/wp-content/uploads/2017/08/vino-%C5%9Farap-mantar%C4%B1-pino-2.jpg',
           inStock: 5
         }, {
-          name: 'Shiraz',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          name: 'Cork Robot - Yuri',
+          description: 'Çok sevimli değil mi? :)\n\nŞarabınızı yudumlamaya başladığınız anlarda şarap mantarı koleksiyonunuza bir yenisini daha eklerken mantarınızı robot karakteri formunda saklayabilir, evinizde, ofisinizde, mutfağınızda bu küçük arkadaşınız ile keyifli anlarınızı yeniden hatırlayabilirsiniz.\n\nŞarap şişelerinizi süsleyerek hediye olarak götüreceğiniz robotunuz ile şarabınıza kişisellik ve özellik katabilirsiniz. Corkers – Şarap Mantarı Robotlar! Kutusu içinden çıkan iğneli pinlerle patlatacağınız şarap mantarınızı son derece eğlenceli robota dönüştürebiliyorsunuz.',
+          price: 40,
+          image: 'https://vinosarap.com/wp-content/uploads/2017/07/71ziFbLKA8L._SL1500_.jpg',
           inStock: 5
         }, {
-          name: 'Riesling',
+          name: 'Ahsap Şarap Kutusu',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          price: 30,
-          image: 'http://via.placeholder.com/300x150',
+          price: 120,
+          image: 'https://www.hansonellis.com/mm5/graphics/00000001/treasure-chest-wood-wine-box-bel8_95c.jpg',
           inStock: 5
         }, ]);
       })

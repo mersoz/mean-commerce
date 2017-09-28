@@ -18,18 +18,18 @@
         <!-- <h1>Vino App</h1> -->
         <ul class="container">
           <li class="two columns logo"><a ui-sref="home" ui-sref-active="active">VİNO</a></li>
+
+          <li class="one columns"><a ui-sref="cart" ui-sref-active="active"><img class="icon" src="/images/cart-icon-white.png" alt="Cart"></a></li>
+
           <li class="two columns"  ng-if="main.isAuthenticated()"><a ng-click="main.logout()">ÇIKIŞ</a></li>
 
           <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">GİRİŞ</a></li>
           <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">KAYIT</a></li>
           <!-- <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li> -->
           <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">HESABIM</a></li>
-          <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="cart" ui-sref-active="active">SEPETİM</a></li>
-          <li class="two columns"><a ui-sref="contact" ui-sref-active="active">İLETİŞİM</a></li>
+          <!-- <li class="two columns"><a ui-sref="contact" ui-sref-active="active">İLETİŞİM</a></li> -->
           <li class="two columns"><a ui-sref="productsIndex" ui-sref-active="active">ÜRÜNLER</a></li>
           <li class="two columns"><a ui-sref="about" ui-sref-active="active">HAKKIMIZDA</a></li>
-
-          <li class="two columns" ng-if="main.isAuthenticated()"><a ui-sref="usersIndex" ui-sref-active="active">Users</a></li>
         </ul>
       </nav>
     </header>
@@ -37,13 +37,52 @@
     <main ui-view></main>
 
     <footer class="container">
-      <ul>
-        <li class="two columns">Vino App</li>
-        <li class="two columns">Contact</li>
-        <li class="two columns">Instagram</li>
-        <li class="two columns">E-mail</li>
-        <li class="two columns">Sign up</li>
-      </ul>
+      <!-- <img class="logo" src="/images/wine-icon.png" alt=""> -->
+      <span class="six columns bottom-nav">
+        <div class="newsletter">
+          <h4>Haberdar Olun</h4>
+          <p>E-mail listemize kayıt olun, yeni ürünleri ve üyelere özel fırsatları kaçırmayın...</p>
+          <input type="email" placeholder="E-mail adresiniz">
+        </div>
+<!--
+        <ul>
+          <li class=""><a ui-sref="productsIndex">Ürünler</a></li>
+          <li class=""><a ui-sref="about">Hakkımızda</a></li>
+        </ul> -->
+      </span>
+
+      <span class="six columns contact-info">
+        <h4>Bize Ulaşın</h4>
+        <ul>
+          <li class="">
+            <img src="/images/mail-logo.png" alt="">
+            <a href="mailto:hello@vinoistanbul.com">
+            hello@vinoistanbul.com
+            </a>
+          </li>
+
+          <li class="">
+            <img src="/images/phone-logo.png" alt="">
+            <a href="tel:+905334445566">
+              +90 (533) 444 5566
+            </a>
+          </li>
+
+          <li class="">
+            <img src="/images/instagram-logo.png" alt="">
+            <a href="https://www.instagram.com/vinoistanbul/">Instagram</a>
+          </li>
+
+          <li class="">
+            <img src="/images/facebook-logo.png" alt="">
+            <a href="https://www.facebook.com/">Facebook</a>
+          </li>
+        </ul>
+
+      </span>
+      <div class="copyright">
+        © Vino Istanbul 2017
+      </div>
     </footer>
 
     <script src="/node_modules/angular/angular.min.js" charset="utf-8"></script>

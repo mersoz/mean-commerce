@@ -1,0 +1,23 @@
+<div class="jumbotron products">
+  <div class="overlay">
+    <h3 class="">ÜRÜNÜ DÜZENLE</h3>
+  </div>
+</div>
+
+<form class="container" ng-submit="productsEdit.update()">
+  <label class="four columns" for="product_name">Ürün adı: </label>
+  <input class="eight columns" type="text" ng-model="productsEdit.product.name" id="product_name">
+
+  <label class="four columns" for="product_price">Ürün fiyatı: </label>
+  <input class="eight columns" type="number" ng-model="productsEdit.product.price" id="product_price">
+
+  <label class="four columns" for="product_description">Ürün açıklaması: </label>
+  <textarea class="eight columns" type="text" ng-model="productsEdit.product.description" id="product_description"></textarea>
+
+  <label class="four columns" for="product_image">Ürün resmi (link): </label>
+  <input class="eight columns" type="text" ng-model="productsEdit.product.image" name="product_image">
+
+  <button type="submit" name="button">Ürünü düzenle</button>
+
+  <button class="delete" ng-click="productsEdit.delete()">Ürünü SİL</button>
+</form>

@@ -3,29 +3,17 @@
     <h3 class="">Ürünler</h3>
   </div>
 </div>
-<section class="container productsView">
-  <!-- <h3 class="twelve columns">Products</h3> -->
-  <!-- Products View -->
-  <div>
-    <p class="center">There are {{ productsIndex.all.length }} products</p>
-    <ul>
-      <li class="four columns" ng-repeat="product in productsIndex.all track by $index">
-        <a ui-sref="productsShow({ id: product.id })"><!-- {{product}} -->
+<section class="container productsIndex">
+    <p class="center">Mağazamızda {{ productsIndex.all.length }} ürün var.</p>
+    <a ui-sref="productsNew" class="button admin">Yeni ürün ekle (Admin)</a>
+    <ul class="clearfix">
+      <li class="six columns" ng-repeat="product in productsIndex.all | orderBy : 'name' track by $index">
+        <a ui-sref="productsShow({ id: product.id })">
           <div class="overlay"><p>Ürünü incele</p></div>
+          <div class="product-image" style="background-image: url('{{ product.image }}')"></div>
           <h5>{{ product.name }}</h5>
-          <p>{{ product.description }}</p>
-          <img src="{{product.image}}" alt="{{ product.name }}">
           <p>₺ {{ product.price }}</p>
-          <!-- <button ng-click="productsIndex.addToCart(product)">Add To Cart</button> -->
         </a>
       </li>
     </ul>
-    <form class="twelve columns" ng-submit="productsIndex.create()">
-      <input type="text" placeholder="Product name" ng-model="productsIndex.newProduct.name" name="" value="">
-      <input type="number" placeholder="Product price" ng-model="productsIndex.newProduct.price" name="" value="">
-      <input type="number" placeholder="Product price" ng-model="productsIndex.newProduct.description" name="" value="">
-      <input type="number" placeholder="Product price" ng-model="productsIndex.newProduct.image" name="" value="">
-      <button type="submit" name="button">Add</button>
-    </form>
-  </div>
 </section>

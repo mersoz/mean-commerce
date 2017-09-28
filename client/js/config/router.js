@@ -39,15 +39,24 @@ $stateProvider
     templateUrl: '/js/views/products/index.html',
     controller: 'ProductsIndexCtrl as productsIndex'
   })
+  .state('productsNew', {
+    url: '/urunler/yeni',
+    templateUrl: '/js/views/products/new.html',
+    controller: 'ProductsNewCtrl as productsNew'
+  })
   .state('productsShow', {
     url: '/urunler/:id',
     templateUrl: '/js/views/products/show.html',
     controller: 'ProductsShowCtrl as productsShow'
-    // controller: 'CartCtrl as cart'
+  })
+  .state('productsEdit', {
+    url: '/urunler/:id/edit',
+    templateUrl: '/js/views/products/edit.html',
+    controller: 'ProductsEditCtrl as productsEdit'
   })
   .state('cart', {
     url: '/sepetim',
-    templateUrl: '/js/views/users/cart.html',
+    templateUrl: '/js/views/cart/view.html',
     controller: 'CartCtrl as cart'
   })
   .state('login', {
