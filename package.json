@@ -1,7 +1,9 @@
 {
   "name": "mean-demo",
   "version": "0.0.1",
-  "postinstall": "bower install",
+  "scripts": {
+    "postinstall": "bower install"
+  },
   "dependencies": {
     "angular": "^1.6.5",
     "angular-resource": "^1.6.6",
