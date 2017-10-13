@@ -7,7 +7,7 @@
     <p class="center">Mağazamızda {{ productsIndex.all.length }} ürün var.</p>
     <a ui-sref="productsNew" class="button admin">Yeni ürün ekle (Admin)</a>
     <ul class="clearfix">
-      <li class="six columns" ng-repeat="product in productsIndex.all | orderBy : 'name' track by $index">
+      <li class="four columns" ng-repeat="product in productsIndex.all | orderBy : 'name' track by $index">
         <a ui-sref="productsShow({ id: product.id })">
           <div class="overlay"><p>Ürünü incele</p></div>
           <div class="product-image" style="background-image: url('{{ product.image }}')"></div>

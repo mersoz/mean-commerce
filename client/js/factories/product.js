@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .factory('Product', Product);
 
 Product.$inject = ['$resource'];

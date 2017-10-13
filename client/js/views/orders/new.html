@@ -1,0 +1,52 @@
+<div class="jumbotron orders">
+  <div class="overlay">
+    <h3 class="">YENİ SİPARİŞ</h3>
+  </div>
+</div>
+
+<section class="container cart checkout" ng-controller="OrdersNewCtrl as ordersNew">
+  <form id="delivery" class="" ng-submit="ordersNew.create()">
+    <h4>Adres bilgileri</h4>
+    <label class="four columns" for="addressType">Adres tipi:</label>
+    <input class="eight columns" type="text" name="addressType" placeholder="Ev/İş/Diğer" ng-model="ordersNew.newOrder.deliverTo.addressType">
+    <br>
+
+    <label class="four columns" for="fullAddress">Adres:</label>
+    <textarea class="eight columns" type="text" name="fullAddress" ng-model="ordersNew.newOrder.deliverTo.fullAddress" placeholder="Yaz ya da söyle, bulamadım böyle
+Neresi açık adresin, neresi yören?"></textarea>
+    <br>
+
+    <label class="four columns" for="city">Şehir:</label>
+    <input class="eight columns" type="text" name="city" ng-model="ordersNew.newOrder.deliverTo.city">
+    <br>
+
+    <label class="four columns" for="borough">İlçe:</label>
+    <input class="eight columns" type="text" name="borough"  ng-model="ordersNew.newOrder.deliverTo.borough">
+    <br>
+
+    <label class="four columns" for="postcode">Posta kodu:</label>
+    <input class="eight columns" type="text" name="postcode"  ng-model="ordersNew.newOrder.deliverTo.postcode">
+
+    <h4>Alıcı bilgileri</h4>
+
+    <label class="four columns" for="name">Ad ve soyad:</label>
+    <input class="eight columns" type="text" name="name"  ng-model="ordersNew.newOrder.deliverTo.recipient">
+
+    <br>
+    <label class="four columns" for="phone">Cep telefonu:</label>
+    <input class="eight columns" type="text" name="phone" placeholder="Örnek: 0532 ### ####" ng-model="ordersNew.newOrder.deliverTo.phone">
+    <br>
+
+
+    <button name="cart" id="cartButton" ui-sref="cart">
+      <i class="arrow left"></i>
+      Sepete dön
+    </button>
+    <button name="payment" id="payButton">
+      Ödeme seçenekleri
+      <i class="arrow right"></i>
+    </button>
+
+  </form>
+
+</section>

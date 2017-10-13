@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .controller('NewsletterCtrl', NewsletterCtrl);
 
   NewsletterCtrl.$inject = ['Newsletter', '$http', '$scope', '$state', '$resource'];

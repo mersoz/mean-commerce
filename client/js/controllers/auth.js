@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .controller('RegisterCtrl', RegisterCtrl)
   .controller('LoginCtrl', LoginCtrl);
 

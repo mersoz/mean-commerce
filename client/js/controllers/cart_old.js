@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .controller('CartCtrl', CartCtrl);
 
 

@@ -1,0 +1,15 @@
+<div class="jumbotron orders">
+  <div class="overlay">
+    <h3 class="">Siparişler</h3>
+  </div>
+</div>
+<section class="container ordersIndex">
+    <p class="center">Sipariş sayısı: {{ ordersIndex.all.length }}</p>
+    <ul class="clearfix">
+      <li class="four columns" ng-repeat="order in ordersIndex.all | orderBy : 'name' track by $index">
+        <a ui-sref="ordersShow({ id: order.id })">
+          <h5>{{ order }}</h5>
+        </a>
+      </li>
+    </ul>
+</section>

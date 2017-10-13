@@ -1,0 +1,54 @@
+<section class="cart checkout">
+  <h3>Checkout Page</h3>
+  <div class="checkout" id="reviewView">
+    <ngcart-cart></ngcart-cart>
+
+    <!-- <div ng-include src="'orderSummary.html'"></div> -->
+    <h4>Teslimat Adresi</h4>
+
+    <h4>Ödeme Tipi</h4>
+
+    <button name="payment" ui-sref="cart" id="payButton">
+      <i class="arrow left"></i>
+      Ödeme seçenekleri
+    </button>
+    <button name="review" id="reviewButton">
+      Siparişi onayla
+      <i class="arrow right"></i>
+    </button>
+  </div>
+</section>
+
+<script type="text/ng-template" id="template/ngCart/cart.html">
+  <h4>Ürünler</h4>
+  <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+      Sepetinizde ürün bulunmamaktadır.
+  </div>
+
+  <div class="container" ng-show="ngCart.getTotalItems() > 0">
+    <table class="table table-striped ngCart cart">
+      <thead>
+      </thead>
+      <tfoot>
+      <tr ng-show="ngCart.getShipping()">
+        <td></td>
+        <td>Kargo:</td>
+        <td>{{ ngCart.getShipping() | currency: '₺ ' }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Toplam:</td>
+        <td>{{ ngCart.totalCost() | currency: '₺ ' }}</td>
+      </tr>
+      </tfoot>
+      <tbody>
+      <tr ng-repeat="item in ngCart.getCart().items track by $index">
+        <td>{{ item.getQuantity() | number }} x {{ item.getName() }}</td>
+        <td></td>
+
+        <td>{{ item.getTotal() | currency: '₺ ' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</script>

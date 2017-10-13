@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .config(Auth);
 
 Auth.$inject = ['$authProvider'];

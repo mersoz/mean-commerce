@@ -13,6 +13,8 @@ const { port, env, dbURI } = require('./server/config/environment');
 const authController  = require('./server/controllers/auth');
 const usersController  = require('./server/controllers/users');
 const productsController  = require('./server/controllers/products');
+const ordersController  = require('./server/controllers/orders');
+
 const routes              = require('./server/config/routes');
 const customResponses     = require('./server/lib/customResponses');
 const errorHandler        = require('./server/lib/errorHandler');

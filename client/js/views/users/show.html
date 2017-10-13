@@ -1,20 +1,21 @@
 <div class="jumbotron" alt="Image">
   <div class="overlay">
-    <h3 class="">User profile</h3>
+    <h3 class="">Hesap detayları</h3>
   </div>
 </div><section class="container">
-  <h3 class="twelve columns">User Details</h3>
-  <!-- Users View -->
-  <div>
-    <p><span class="bold">Name:</span> {{ usersShow.user.first_name }} {{ usersShow.user.last_name }}
-    <br><span class="bold">Username:</span> {{ usersShow.user.username }}
-    <br><span class="bold">E-mail:</span> {{ usersShow.user.email }}</p>
-    <!-- <button ng-click="users.addToCart(user)">Add To Cart</button> -->
-    <!-- <button ng-click="users.delete(user)">Delete</button> -->
+  <div style="letter-spacing: 1px">
+    <p>
+      <span class="bold">Ad Soyad:</span> {{ usersShow.user.first_name }} {{ usersShow.user.last_name }}
+    <br>
+      <span class="bold">Doğum tarihi:</span> {{ usersShow.user.birthday | date:'d/MM/y' }}
+    <br>
+      <span class="bold">E-mail:</span> {{ usersShow.user.email }}
+    <br>
+      <span class="bold">Cinsiyet:</span> {{ usersShow.user.gender }}
+    </p>
 
-
-    <button class="edit" ui-sref="usersEdit({ id: usersShow.user.id })">Edit User</button>
-    <button class="delete" ng-click="usersShow.delete(user)">Delete User</button>
+    <button class="edit" ui-sref="usersEdit({ id: usersShow.user.id })">Hesabı düzenle</button>
+    <button class="delete" ng-click="usersShow.delete(user)">Hesabı sil</button>
 
 </div>
 </section>

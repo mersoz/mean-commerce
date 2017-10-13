@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="meanApp">
+<html ng-app="vinoApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -28,16 +29,18 @@
           <!-- <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li> -->
           <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">HESABIM</a></li>
           <!-- <li class="two columns"><a ui-sref="contact" ui-sref-active="active">İLETİŞİM</a></li> -->
-          <li class="two columns"><a ui-sref="productsIndex" ui-sref-active="active">ÜRÜNLER</a></li>
-          <li class="two columns"><a ui-sref="about" ui-sref-active="active">HAKKIMIZDA</a></li>
+          <li class="three columns"><a ui-sref="productsIndex" ui-sref-active="active">ÜRÜNLER</a></li>
+          <li class="three columns"><a ui-sref="about" ui-sref-active="active">HAKKIMIZDA</a></li>
         </ul>
+        <a ui-sref="ordersIndex" ui-sref-active="active">Siparisler</a>
+        <a ui-sref="ordersNew" ui-sref-active="active">Yeni siparis</a>
       </nav>
     </header>
     <!-- <p>{{  }}</p> -->
     <main ui-view></main>
 
+    <img class="logo" src="/images/wine-icon.png" alt="">
     <footer class="container">
-      <!-- <img class="logo" src="/images/wine-icon.png" alt=""> -->
       <span class="six columns bottom-nav">
         <div class="newsletter">
           <h4>Haberdar Olun</h4>
@@ -80,8 +83,19 @@
         </ul>
 
       </span>
+
+      <div class="logos">
+        <img src="/images/logos/visa-kucuk.png" alt="">
+        <img src="/images/logos/mc-kucuk.jpg" alt="">
+        <img src="/images/logos/amex-kucuk.jpg" alt="">
+        <img src="/images/logos/3lu-kucuk-yeni.png" alt="">
+        <img src="/images/logos/garanti-eticaret-kucuk.png" alt="">
+      </div>
+
       <div class="copyright">
+        <a ui-sref="support">Destek</a>
         © Vino Istanbul 2017
+        <a ui-sref="policies">Sözleşmeler</a>
       </div>
     </footer>
 
@@ -98,12 +112,17 @@
 
     <script type="text/javascript" src="/js/factories/user.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/factories/product.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/factories/order.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="/js/services/checkoutService.js" charset="utf-8"></script>
 
     <script type="text/javascript" src="/js/controllers/auth.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/controllers/main.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/controllers/cart.js" charset="utf-8"></script>
+
     <script type="text/javascript" src="/js/controllers/users.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/controllers/products.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/controllers/orders.js" charset="utf-8"></script>
 
   </body>
 </html>

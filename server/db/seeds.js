@@ -3,6 +3,7 @@ mongoose.Promise = require('bluebird');
 
 const Product = require('../models/product');
 const User = require('../models/user');
+// const Order = require('../models/order');
 
 const { dbURI } = require('../config/environment');
 
@@ -10,6 +11,7 @@ mongoose.connect(dbURI);
 
 Product.collection.drop();
 User.collection.drop();
+// Order.collection.drop();
 
 User
   .create([{

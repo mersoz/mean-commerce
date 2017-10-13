@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$window', '$scope', '$rootScope', '$state', '$auth', 'User'];

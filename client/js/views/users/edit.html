@@ -6,26 +6,35 @@
 
 <section class="clearfix">
   <form class="twelve columns" ng-submit="usersEdit.submit()" novalidate>
-    <!-- {{ usersEdit.user }} -->
-    <label for="username">Username</label>
-    <!-- <input type="text" name="username" id="username" ng-model="usersEdit.user.username"> -->
-    <input type="text" ng-model="usersEdit.user.username" name="username" value="">
+    <label class="six columns" for="first_name">Adınız: </label>
+    <input class="six columns" type="text" name="first_name" ng-model="usersEdit.user.first_name">
+    <br>
+    <label class="six columns" for="last_name">Soyadınız: </label>
+    <input class="six columns" type="text" name="last_name" ng-model="usersEdit.user.last_name">
+    <br>
+    <label class="six columns" for="birthday">Doğum tarihiniz: </label>
+    <input class="six columns" type="date" name="birthday" placeholder="Doğum tarihiniz" ng-model="usersEdit.user.birthday" min="1900-01-01" max="2007-01-01">
+    <br>
+    <label class="six columns" for="email">E-mail adresiniz: </label>
+    <input class="six columns" type="text" name="email" ng-model="usersEdit.user.email">
+    <br>
+    <label class="six columns" for="gender">Cinsiyetiniz: </label>
+    <!-- <input class="six columns" type="text" name="gender" ng-model="usersEdit.user.gender"> -->
 
-    <label for="email">E-mail</label>
-    <input type="text" ng-model="usersEdit.user.email" name="email" value="">
+    <input class="one columns" type="radio" id="genderChoice1" name="gender" value="Erkek">
+    <label class="radio two columns" for="genderChoice1">Erkek</label>
 
-    <label for="firstName">First name:</label>
-    <input type="text" ng-model="usersEdit.user.first_name" name="firstName" value="">
+    <input class="one columns" type="radio" id="genderChoice2" name="gender" value="Kadin">
+    <label class="radio two columns" for="genderChoice2">Kadın</label>
 
-    <label for="lastName">Last name:</label>
-    <input type="text" ng-model="usersEdit.user.last_name" name="lastName" value="">
 
-    <label for="password">Password</label>
-    <input type="text" ng-model="usersEdit.user.password" name="password" required>
-
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="text" ng-model="usersEdit.user.passwordConfirmation" name="passwordConfirmation" required>
-
+    <br>
+    <label class="six columns" for="password">Şifreniz: </label>
+    <input class="six columns" type="password" name="password" id="password" ng-model="usersEdit.user.password" data-ng-click=" alert('hi') " required>
+    <br>
+    <label class="six columns" for="password">Şifreniz (tekrar): </label>
+    <input class="six columns" type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="usersEdit.user.passwordConfirmation" required>
+    <br>
     <button type="submit" name="button">Update</button>
   </form>
 </section>

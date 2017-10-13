@@ -1,5 +1,5 @@
 angular
-  .module('meanApp')
+  .module('vinoApp')
   .controller('ProductsIndexCtrl', ProductsIndexCtrl)
   .controller('ProductsNewCtrl', ProductsNewCtrl)
   .controller('ProductsShowCtrl', ProductsShowCtrl)
