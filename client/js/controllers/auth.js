@@ -8,12 +8,16 @@ function RegisterCtrl($auth, $state) {
   const vm = this;
   vm.user = {};
 
+  // If already logged in, redirect.
+  if ($auth.isAuthenticated()) {
+    $state.go('productsIndex')
+  }
+
+  vm.submit = submit;
   function submit() {
     $auth.signup(vm.user)
       .then(() => $state.go('login'));
   }
-
-  vm.submit = submit;
 }
 
 LoginCtrl.$inject = ['$window', '$auth', '$state', '$rootScope'];
@@ -21,17 +25,18 @@ function LoginCtrl($window, $auth, $state, $rootScope) {
   const vm = this;
   vm.credentials = {};
 
+  // If already logged in, redirect.
+  // Alternatively, remove existing token.
   if ($auth.isAuthenticated()) {
     $state.go('productsIndex')
-    console.log('Already logged in, logout before logging into another account.');
   }
 
   vm.submit = submit;
   function submit() {
     $auth.login(vm.credentials)
       .then((response) => {
+        // Reload window to update the navigation bar
         $window.location.reload();
       });
   }
-
 }

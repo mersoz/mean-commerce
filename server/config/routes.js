@@ -10,7 +10,7 @@ const adminRoute = require('../lib/adminRoute');
 
 router.route('/api/users')
   .all(secureRoute)
-  .get(adminRoute, users.index)
+  .get(users.index)
   .post(users.create);
 
 router.route('/api/users/:id')

@@ -6,45 +6,40 @@ MainCtrl.$inject = ['User', '$window', '$scope', '$rootScope', '$state', '$auth'
 function MainCtrl(User, $window, $scope, $rootScope, $state, $auth) {
   const vm = this;
 
+  // Remove expired token from local storage
   if ($auth.getPayload() && !$auth.isAuthenticated()) {
-    console.log('Removing expired token from local storage.');
     $auth.removeToken();
+  } else if ($auth.isAuthenticated()) {
+    console.log('A user is logged in:');
+    User
+      .get({ id: $auth.getPayload().userId })
+      .$promise
+      .then((user) => {
+        console.log(user);
+        vm.currentUser = user;
+        // $scope.currentUser = user;
+        // $rootScope.currentUser = user;
+      });
   } else {
-    console.log('NO payload found.');
+    console.log('No payload found...');
   }
 
-  // vm.isAuthenticated = $auth.isAuthenticated;
-
+  vm.isAuthenticated = $auth.isAuthenticated;
 
   // if($auth.isAuthenticated){
   //   console.log('auth is authenticated');
   // } else if (true) {
-  //
   // }
-  //
-  // vm.isAuthenticated = $auth.isAuthenticated;
-  //
   // if(vm.isAuthenticated){
   //   console.log('vm is authenticated');
   // }
-  //
   // console.log($auth.getPayload());
-  //
-  // if(vm.isAuthenticated()) {
-  //   console.log('user logged in = payload found');
-  //   vm.currentUserId = $auth.getPayload().userId;
-  //   User
-  //     .get({ id: vm.currentUserId })
-  //     .$promise
-  //     .then((user) => {
-  //       console.log(user);
-  //       vm.currentUser = user;
-  //       $scope.currentUser = user;
-  //       $rootScope.currentUser = user;
-  //     });
-  // } else {
-  //   console.log('no payload found');
-  // }
+
+  if (vm.isAuthenticated()) {
+
+  } else {
+    console.log('not authenticated');
+  }
 
   vm.logout = logout;
   function logout() {
