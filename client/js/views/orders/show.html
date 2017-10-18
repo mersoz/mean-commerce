@@ -1,25 +1,46 @@
 <div class="jumbotron" alt="Image">
   <div class="overlay">
-    <h3 class="">Ürün detayları</h3>
+    <h3 class="">SİPARİŞ DETAYLARI</h3>
   </div>
 </div>
 
-<section class="container productsShow">
+<section class="container ordersShow">
+  <a ui-sref="ordersEdit({ id: ordersShow.order.id })" class="button admin">Siparişi düzenle</a>
+
+  {{ ordersShow.order.items }}
+
+  <p>
+    Sipariş tarihi: {{ ordersShow.order.createdAt | date:'medium' }}  <br>
+    Güncelleme tarihi: {{ ordersShow.order.updatedAt | date:'medium' }}  <br>
+    Siparişi veren: {{ ordersShow.order.createdBy.first_name }} {{ ordersShow.order.createdBy.last_name }}  <br>
+    Maliyet: {{ ordersShow.order.orderCost | date:'medium' }}  <br>
+    Ödeme şekli: {{ ordersShow.order.paymentMethod }}  <br>
+    Ödeme durumu: {{ ordersShow.order.paymentStatus }}
+  </p>
+
+  <h4>
+    Alıcı bilgileri
+  </h4>
+  <p>
+    Ad Soyad: {{ ordersShow.order.deliverTo.recipient }} <br>
+    Telefon: {{ ordersShow.order.deliverTo.phone }} <br>
+    Adres: ({{ ordersShow.order.deliverTo.addressType }}) {{ ordersShow.order.deliverTo.fullAddress }}, {{ ordersShow.order.deliverTo.borough }}/{{ ordersShow.order.deliverTo.city }} {{ ordersShow.order.deliverTo.postcode }}
+  </p>
+
+  <h4>
+    Ürünler
+  </h4>
+  <ul class="">
+    <li class="" ng-repeat="item in ordersShow.order.items | orderBy : 'name' track by $index">
+      <a ui-sref="productsShow({ id: item.id })">
+        <h5>{{ item }}</h5>
+      </a>
+    </li>
+  </ul>
 
 
+<!-- {"updatedAt":"2017-10-13T10:04:19.852Z","createdAt":"2017-10-13T10:04:19.852Z","createdBy":{"first_name":"Vino","last_name":"Admin","email":"admin@vino.com","password":"$2a$08$cexbkiDQg3cTY5Kty6ANxeyhNrudkNJaFGFiOAPK9FJeIrrEymdqi","city":"Adana","birthday":"1960-07-09T23:00:00.000Z","gender":"Kadın","passwordConfirmation":null,"id":"59db5f4db21bd51e343536ee"},"items":[],"id":"59e08fa368a68036e62e64e0"}   -->
 
-
-  <a ui-sref="productsEdit({ id: productsShow.product.id })" class="button admin">Ürünü düzenle</a>
-
-  <img src="{{productsShow.product.image}}" alt="{{ productsShow.product.name }}">
-
-  <div class="productInfo">
-    <h3>{{ productsShow.product.name }}</h3>
-    <h5>₺ {{ productsShow.product.price }}</h5>
-    <ngcart-addtocart id="{{ productsShow.product.id }}" name="{{ productsShow.product.name }}" price="{{ productsShow.product.price }}" quantity="1" quantity-max="5">Sepete ekle</ngcart-addtocart>
-    <p>{{ productsShow.product.description }}</p>
-
-  </div>
 </section>
 
 <script type="text/ng-template" id="template/ngCart/addtocart.html">

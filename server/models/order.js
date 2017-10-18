@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  referenceNumber: { type: String, required: true },
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref:'User' },
+  // referenceNumber: { type: String },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref:'User', required: true },
   deliverTo: {
     recipient: { type: String },
     phone: { type: String },
@@ -20,7 +20,7 @@ const orderSchema = new mongoose.Schema({
   ],
   orderCost: { type: Number },
   paymentMethod: { type: String },
-  paymentStatus: { type: Boolean }
+  paymentStatus: { type: Boolean, default: false }
 }, {
   timestamps: true
 });

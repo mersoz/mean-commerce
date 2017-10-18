@@ -8,13 +8,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 $locationProvider.html5Mode(true);
 
 $stateProvider
-  // .state('home', {
-  //   url: '/',
-  //  templateUrl: '/js/views/static/home.html'
-  //   templateUrl: '/js/views/products/index.html',
-  //   controller: 'ProductsIndexCtrl as productsIndex'
-  // })
-
   .state('about', {
     url: '/hakkimizda',
     templateUrl: '/js/views/static/about.html'

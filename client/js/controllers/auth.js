@@ -21,16 +21,15 @@ function LoginCtrl($window, $auth, $state, $rootScope) {
   const vm = this;
   vm.credentials = {};
 
-  console.log($rootScope.currentUser);
-  if ($rootScope.currentUser) {
+  if ($auth.isAuthenticated()) {
     $state.go('productsIndex')
+    console.log('Already logged in, logout before logging into another account.');
   }
 
   vm.submit = submit;
   function submit() {
     $auth.login(vm.credentials)
       .then((response) => {
-        // console.log(response);
         $window.location.reload();
       });
   }

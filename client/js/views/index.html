@@ -27,7 +27,7 @@
           <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">GİRİŞ</a></li>
           <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">KAYIT</a></li>
           <!-- <li class="two columns" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li> -->
-          <li class="two columns"  ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">HESABIM</a></li>
+          <li class="two columns"  ng-if="main.isAuthenticated()"><a ng-if="main.isAuthenticated()" ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">HESABIM</a></li>
           <!-- <li class="two columns"><a ui-sref="contact" ui-sref-active="active">İLETİŞİM</a></li> -->
           <li class="three columns"><a ui-sref="productsIndex" ui-sref-active="active">ÜRÜNLER</a></li>
           <li class="three columns"><a ui-sref="about" ui-sref-active="active">HAKKIMIZDA</a></li>
@@ -36,7 +36,7 @@
         <a ui-sref="ordersNew" ui-sref-active="active">Yeni siparis</a>
       </nav>
     </header>
-    <!-- <p>{{  }}</p> -->
+
     <main ui-view></main>
 
     <img class="logo" src="/images/wine-icon.png" alt="">

@@ -13,7 +13,6 @@ function OrdersIndexCtrl(Order, $http, $scope, $state, $resource) {
 
 OrdersNewCtrl.$inject = ['Order', '$http', '$scope', '$state', '$resource'];
 function OrdersNewCtrl(Order, $http, $scope, $state, $resource) {
-  // const Order = $resource('/api/orders');
   const vm = this;
   vm.all = Order.query();
 

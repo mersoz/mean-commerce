@@ -6,10 +6,11 @@ const products = require('../controllers/products');
 const orders = require('../controllers/orders');
 
 const secureRoute = require('../lib/secureRoute');
+const adminRoute = require('../lib/adminRoute');
 
 router.route('/api/users')
   .all(secureRoute)
-  .get(users.index)
+  .get(adminRoute, users.index)
   .post(users.create);
 
 router.route('/api/users/:id')
@@ -20,23 +21,23 @@ router.route('/api/users/:id')
 
 router.route('/api/products')
   .get(products.index)
-  .post(products.create);
+  .post(secureRoute, adminRoute, products.create);
 
 router.route('/api/products/:id')
   .get(products.show)
-  .put(products.update)
-  .delete(products.delete);
+  .put(secureRoute, adminRoute, products.update)
+  .delete(secureRoute, adminRoute, products.delete);
 
 router.route('/api/orders')
-  // .all(secureRoute)
-  .get(orders.index)
+  .all(secureRoute)
+  .get(adminRoute, orders.index)
   .post(orders.create);
 
 router.route('/api/orders/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(orders.show)
   .put(orders.update)
-  .delete(orders.delete);
+  .delete(adminRoute, orders.delete);
 
 router.route('/api/register')
   .post(auth.register);
