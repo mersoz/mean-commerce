@@ -4,20 +4,44 @@
   </div>
 </div>
 
-<form class="container" ng-submit="ordersEdit.update()">
-  <label class="four columns" for="order_name">Ürün adı: </label>
-  <input class="eight columns" type="text" ng-model="ordersEdit.order.name" id="order_name">
+<section class="container cart checkout" ng-controller="OrdersNewCtrl as ordersEdit">
+  <form id="delivery" class="" ng-submit="ordersEdit.create()">
+    <h4>Adres bilgileri</h4>
+    <label class="four columns" for="addressType">Adres tipi:</label>
+    <input class="eight columns" type="text" name="addressType" placeholder="Ev/İş/Diğer" ng-model="ordersEdit.newOrder.deliverTo.addressType">
+    <br>
 
-  <label class="four columns" for="order_price">Ürün fiyatı: </label>
-  <input class="eight columns" type="number" ng-model="ordersEdit.order.price" id="order_price">
+    <label class="four columns" for="fullAddress">Adres:</label>
+    <textarea class="eight columns" type="text" name="fullAddress" ng-model="ordersEdit.newOrder.deliverTo.fullAddress" placeholder="Yaz ya da söyle, bulamadım böyle
+Neresi açık adresin, neresi yören?"></textarea>
+    <br>
 
-  <label class="four columns" for="order_description">Ürün açıklaması: </label>
-  <textarea class="eight columns" type="text" ng-model="ordersEdit.order.description" id="order_description"></textarea>
+    <label class="four columns" for="city">Şehir:</label>
+    <input class="eight columns" type="text" name="city" ng-model="ordersEdit.newOrder.deliverTo.city">
+    <br>
 
-  <label class="four columns" for="order_image">Ürün resmi (link): </label>
-  <input class="eight columns" type="text" ng-model="ordersEdit.order.image" name="order_image">
+    <label class="four columns" for="borough">İlçe:</label>
+    <input class="eight columns" type="text" name="borough"  ng-model="ordersEdit.newOrder.deliverTo.borough">
+    <br>
 
-  <button type="submit" name="button">Ürünü düzenle</button>
+    <label class="four columns" for="postcode">Posta kodu:</label>
+    <input class="eight columns" type="text" name="postcode"  ng-model="ordersEdit.newOrder.deliverTo.postcode">
 
-  <button class="delete" ng-click="ordersEdit.delete()">Ürünü SİL</button>
-</form>
+    <h4>Alıcı bilgileri</h4>
+
+    <label class="four columns" for="name">Ad ve soyad:</label>
+    <input class="eight columns" type="text" name="name"  ng-model="ordersEdit.newOrder.deliverTo.recipient">
+
+    <br>
+    <label class="four columns" for="phone">Cep telefonu:</label>
+    <input class="eight columns" type="text" name="phone" placeholder="Örnek: 0532 ### ####" ng-model="ordersEdit.newOrder.deliverTo.phone">
+    <br>
+
+
+    <button id="updateOrder">
+      Siparişi güncelle
+    </button>
+
+  </form>
+
+</section>

@@ -3,12 +3,17 @@ var Order = require('../models/order');
 function indexRoute(req, res, next) {
   Order
     .find()
+    .populate('createdBy')
     .exec()
     .then((orders) => res.status(200).json(orders))
     .catch(next);
 }
 
 function createRoute(req, res, next) {
+  console.log(req.user);
+
+  req.body.createdBy = req.user;
+
   Order
     .create(req.body)
     .then((order) => res.status(201).json(order))
@@ -18,6 +23,7 @@ function createRoute(req, res, next) {
 function showRoute(req, res, next) {
   Order
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((order) => {
       if(!order) return res.notFound();

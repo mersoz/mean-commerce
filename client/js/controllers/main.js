@@ -2,49 +2,49 @@ angular
   .module('vinoApp')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$window', '$scope', '$rootScope', '$state', '$auth', 'User'];
-function MainCtrl($window, $scope, $rootScope, $state, $auth, User) {
-// MainCtrl.$inject = ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$state', '$auth', 'User'];
-// function MainCtrl($scope, $rootScope, $route, $routeParams, $location, $state, $auth, User) {
-  // $scope.$route = $route;
-  // $scope.$location = $location;
-  // $scope.$routeParams = $routeParams;
-
+MainCtrl.$inject = ['User', '$window', '$scope', '$rootScope', '$state', '$auth'];
+function MainCtrl(User, $window, $scope, $rootScope, $state, $auth) {
   const vm = this;
 
-  // Something wrong with $auth.isAuthenticated
-  // console.log($auth.isAuthenticated);
-  vm.isAuthenticated = $auth.isAuthenticated;
-  // if ($auth.isAuthenticated) {
-  //     console.log('is authenticated');
-  // } else {
-  //   console.log('not authenticated');
+  if ($auth.getPayload() && !$auth.isAuthenticated()) {
+    console.log('Removing expired token from local storage.');
+    $auth.removeToken();
+  } else {
+    console.log('NO payload found.');
+  }
+
+  // vm.isAuthenticated = $auth.isAuthenticated;
+
+
+  // if($auth.isAuthenticated){
+  //   console.log('auth is authenticated');
+  // } else if (true) {
   //
   // }
-  // vm.isAuthenticated = false;
-
-  console.log($auth.getPayload());
-  if($auth.getPayload()) {
-    console.log('user logged in = payload found');
-    vm.currentUserId = $auth.getPayload().userId;
-    User
-      .get({ id: vm.currentUserId })
-      .$promise
-      .then((user) => {
-        console.log(user);
-        vm.currentUser = user;
-        $scope.currentUser = user;
-        $rootScope.currentUser = user;
-
-        console.log($scope.currentUser);
-        console.log($scope.currentUser);
-        console.log($rootScope.currentUser);
-
-        // vm.isAuthenticated = true;
-      });
-  } else {
-    console.log('no payload found');
-  }
+  //
+  // vm.isAuthenticated = $auth.isAuthenticated;
+  //
+  // if(vm.isAuthenticated){
+  //   console.log('vm is authenticated');
+  // }
+  //
+  // console.log($auth.getPayload());
+  //
+  // if(vm.isAuthenticated()) {
+  //   console.log('user logged in = payload found');
+  //   vm.currentUserId = $auth.getPayload().userId;
+  //   User
+  //     .get({ id: vm.currentUserId })
+  //     .$promise
+  //     .then((user) => {
+  //       console.log(user);
+  //       vm.currentUser = user;
+  //       $scope.currentUser = user;
+  //       $rootScope.currentUser = user;
+  //     });
+  // } else {
+  //   console.log('no payload found');
+  // }
 
   vm.logout = logout;
   function logout() {

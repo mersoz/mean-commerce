@@ -1,3 +1,8 @@
+<script type="text/javascript">
+  console.log('hello');
+  document.write(5 + 6);
+</script>
+
 <div class="jumbotron orders">
   <div class="overlay">
     <h3 class="">YENİ SİPARİŞ</h3>
@@ -50,3 +55,17 @@ Neresi açık adresin, neresi yören?"></textarea>
   </form>
 
 </section>
+
+<ngcart-cart></ngcart-cart>
+
+<script type="text/ng-template" id="template/ngCart/cart.html">
+  {{ ngCart.getCart().items }}
+  <ul>
+  <li ng-repeat="item in ngCart.getCart().items track by $index">
+    {{ item.getName() }}&nbsp;&nbsp;
+    {{ item.getQuantity() | number }}&nbsp;&nbsp;
+    {{ item.getTotal() | currency: '₺ ' }}
+  </li>
+</ul>
+
+</script>

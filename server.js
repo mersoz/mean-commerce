@@ -19,15 +19,10 @@ const routes              = require('./server/config/routes');
 const customResponses     = require('./server/lib/customResponses');
 const errorHandler        = require('./server/lib/errorHandler');
 
-
 mongoose.connect(dbURI);
-// mongoose.connect('mongodb://localhost:27017/mean-demo');
-
-// if(env !== 'test') app.use(morgan('dev'));
 
 app.use(morgan());
 app.use(bodyParser());
-// app.use(bodyParser.json({limit: '5mb'})); // to limit max size of uploaded image
 
 app.use(express.static(`${__dirname}/client`));
 app.use('/bower_components', express.static(`${__dirname}/bower_components`));
